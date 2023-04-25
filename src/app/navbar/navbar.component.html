@@ -1,0 +1,24 @@
+<mat-toolbar class="navbar">
+    <div class="nav-logo-img">
+        <img src="/assets/my_movie_box_logo.png" alt="My movie box logo" routerLink="/movies">
+    </div>
+
+    <div class="nav-logo-text">
+        <a routerLink="/movies">
+            My Movie Box
+        </a>
+    </div>
+
+    <div class="nav-profile">
+        <a routerLink="/profile">
+            Profile
+        </a>
+    </div>
+
+    <div class="nav-logout">
+        <a mat-button (click)="logout()" class="logout-button">
+            <mat-icon>logout</mat-icon>
+            <span class="nav-logout__text">Logout</span>
+        </a>
+    </div>
+</mat-toolbar>
