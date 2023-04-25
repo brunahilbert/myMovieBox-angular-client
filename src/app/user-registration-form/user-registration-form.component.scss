@@ -1,0 +1,22 @@
+mat-card {
+    padding: 20px 40px;
+    align-items: center;
+    border-radius: 8px;
+    justify-content: space-between;
+}
+
+mat-card-header {
+    margin-bottom: 25px;
+}
+
+mat-card-actions {
+    justify-content: center;
+}
+
+mat-card-actions button {
+    align-self: center;
+    text-align: center;
+    background-color: #e49e4d;
+    color: #000;
+    margin-top: 5px;
+}
