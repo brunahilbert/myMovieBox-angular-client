@@ -11,14 +11,14 @@ import { map } from 'rxjs/operators';
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://my-movie-box.herokuapp.com/';
 @Injectable({ providedIn: 'root' })
-export class UserRegistrationService {
+export class FetchApiDataService {
   // Inject the HttpClient module to the constructor params
   // This will provide HttpClient to the entire class, making it available via this.http
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Making the api call for the user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
-    console.log(userDetails);
+    // console.log(userDetails);
     return this.http
       .post(apiUrl + 'user', userDetails)
       .pipe(catchError(this.handleError));
@@ -26,7 +26,7 @@ export class UserRegistrationService {
 
   // If you don't explicitly set the visibility of a function (or method), by default it will be considered as public
   userLogin(userDetails: any): Observable<any> {
-    console.log(userDetails);
+    // console.log(userDetails);
     return this.http
       .post(apiUrl + 'login', userDetails)
       .pipe(catchError(this.handleError));
@@ -82,7 +82,7 @@ export class UserRegistrationService {
 
   // Get user by username
   getUser(): Observable<any> {
-    const username = localStorage.getItem('Username');
+    const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     return this.http
       .get(apiUrl + 'users/' + username, {
@@ -95,7 +95,7 @@ export class UserRegistrationService {
 
   // Get favorite movies by username
   getFavoriteMovie(): Observable<any> {
-    const username = localStorage.getItem('Username');
+    const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     return this.http
       .get(apiUrl + 'users/' + username, {
@@ -112,13 +112,14 @@ export class UserRegistrationService {
 
   // Add favorite movie by username and movie id
   addFavoriteMovie(movieId: string): Observable<any> {
-    const username = localStorage.getItem('Username');
+    const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     return this.http
       .post(
         apiUrl + 'user/' + username + '/movies/' + movieId,
         { FavoriteMovies: movieId },
         {
+          responseType: 'text',
           headers: new HttpHeaders({
             Authorization: 'Bearer ' + token,
           }),
@@ -129,20 +130,21 @@ export class UserRegistrationService {
 
   // Update user infos by username
   editUser(updatedUser: any): Observable<any> {
-    const username = localStorage.getItem('Username');
+    const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     return this.http
       .put(apiUrl + 'users/' + username, updatedUser, {
+        responseType: 'text',
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
       })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
+      .pipe(catchError(this.handleError));
   }
 
   // Delete user by userName
   deleteUser(): Observable<any> {
-    const username = localStorage.getItem('Username');
+    const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     return this.http
       .delete(apiUrl + 'users/' + username, {
@@ -155,10 +157,11 @@ export class UserRegistrationService {
 
   // Delete favorite movie by username and movie id
   deleteFavoriteMovie(movieId: string): Observable<any> {
-    const username = localStorage.getItem('Username');
+    const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     return this.http
       .delete(apiUrl + 'user/' + username + '/movies/' + movieId, {
+        responseType: 'text',
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -168,16 +171,18 @@ export class UserRegistrationService {
 
   // Non-typed response extraction
   private extractResponseData(res: any): any {
+    // console.log(res)
     const body = res;
     return body || {};
   }
 
   private handleError(error: HttpErrorResponse): any {
+    console.log(error)
     if (error.error instanceof ErrorEvent) {
       console.error('Some error occurred:', error.error.message);
     } else {
       console.error(
-        `Error Status code ${error.status}, ` + `Error body is: ${error.error}`
+        `Error Status code ${error.status}, ` + `Error body is: ${JSON.stringify(error.error)}`
       );
     }
     return throwError('Something bad happened; please try again later.');
