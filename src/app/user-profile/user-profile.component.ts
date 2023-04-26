@@ -30,11 +30,14 @@ export class UserProfileComponent implements OnInit {
     this.getUserInfos();
   }
 
+  /**
+   * Gets the user's data by making an API call and updates the component's state with the obtained information
+   * @function getUserInfos
+   */
   getUserInfos(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
       this.favMovies = resp.FavoriteMovies;
-      // console.log(resp);
       this.updatedUser.Username = this.user.Username;
       this.updatedUser.Email = this.user.Email;
       this.updatedUser.Birthday = this.user.Birthday;
@@ -42,9 +45,12 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Sends an API request to update the user's information with the updatedUser object, and then reloads the page
+   * @function updateUser
+   */
   updateUser(): void {
     this.fetchApiData.editUser(this.updatedUser).subscribe((resp) => {
-      // console.log(resp);
       localStorage.setItem('user', this.updatedUser.Username);
       window.location.reload();
       this.snackBar.open('Your profile has been successfuly updated!', 'OK', {
@@ -54,6 +60,11 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Deletes the user's account and clears their local storage if the user confirms the deletion
+   * Navigates to the welcome page and displays a snackbar notification upon successful deletion
+   * @function deleteUser
+   */
   deleteUser(): void {
     if (
       confirm(
@@ -70,7 +81,7 @@ export class UserProfileComponent implements OnInit {
         );
       });
       this.fetchApiData.deleteUser().subscribe((resp) => {
-        // console.log(resp);
+        console.log(resp);
         localStorage.clear();
       });
     }
