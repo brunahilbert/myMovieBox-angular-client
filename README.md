@@ -1,11 +1,5 @@
 # myMovieBox - Angular - Client
 
-<p align="center">
-    <img src="src/assets/my-movie-box-welcome-view.png" height="300">
-    <img src="src/assets/my-movie-box-movie-card.png" height="300">
-    <img src="src/assets/my-movie-box-profile-view.png" height="300">
-</p>
-
 The objective of this project is to build the client-side for an application called myMovieBox, using **Angular** and based on its existing server-side code (REST API and database), with supporting documentation.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
@@ -89,3 +83,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 	"typescript": "~4.9.4"
 }
 ```
+
+### App Screenshots:
+
+<p align="center">
+    <img src="src/assets/my-movie-box-welcome-view.png" height="400">
+    <img src="src/assets/my-movie-box-movie-card.png" height="400">
+    <img src="src/assets/my-movie-box-profile-view.png" height="400">
+</p>
