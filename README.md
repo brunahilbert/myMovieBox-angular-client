@@ -87,7 +87,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ### App Screenshots:
 
 <p align="center">
-    <img src="src/assets/my-movie-box-welcome-view.png" height="400">
-    <img src="src/assets/my-movie-box-movie-card.png" height="400">
-    <img src="src/assets/my-movie-box-profile-view.png" height="400">
+    <img src="src/assets/my_movie_box_welcome_view.png" height="400">
+    <img src="src/assets/my_movie_box_movie_card.png" height="400">
+    <img src="src/assets/my_movie_box_profile_view.png" height="400">
 </p>
