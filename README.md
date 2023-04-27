@@ -1,10 +1,10 @@
 # myMovieBox - Angular - Client
 
 <p align="center">
-    <img src="assets/my-movie-box-welcome-view.png" height="300">
-    <img src="assets/my-movie-box-movie-card.png" height="300">
-    <img src="assets/my-movie-box-profile-view.png" height="300">
-</p>   
+    <img src="src/assets/my-movie-box-welcome-view.png" height="300">
+    <img src="src/assets/my-movie-box-movie-card.png" height="300">
+    <img src="src/assets/my-movie-box-profile-view.png" height="300">
+</p>
 
 The objective of this project is to build the client-side for an application called myMovieBox, using **Angular** and based on its existing server-side code (REST API and database), with supporting documentation.
 
