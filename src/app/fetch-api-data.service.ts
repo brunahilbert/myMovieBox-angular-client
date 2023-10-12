@@ -9,7 +9,7 @@ import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = 'https://my-movie-box.herokuapp.com/';
+const apiUrl = 'https://my-movie-box-211a3d432647.herokuapp.com/';
 @Injectable({ providedIn: 'root' })
 export class FetchApiDataService {
   // Inject the HttpClient module to the constructor params
